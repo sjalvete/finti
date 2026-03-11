@@ -34,37 +34,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initSectionEditors();
 
-  const el = document.getElementById('sections-sortable');
-  if (!el) return;
+  /*const el = document.getElementById('sections-sortable');
+  if (!el) return;*/
 
-  Sortable.create(el, {
-    animation: 150,
-    handle: '[data-drag-handle]',
-    ghostClass: 'opacity-50',
-    dragClass: 'opacity-80',
-    onEnd: async () => {
-      const ids = Array.from(el.querySelectorAll('[data-section-id]'))
-        .map(x => Number(x.getAttribute('data-section-id')));
+  document.querySelectorAll('[data-sections-sortable]').forEach(container => {
 
-      await fetch('/sections/reorder', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRF-TOKEN': csrf(),
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({ ids }),
-      });
-    },
+    Sortable.create(container, {
+      animation: 150,
+      handle: '[data-drag-handle]',
+      ghostClass: 'opacity-50',
+      dragClass: 'opacity-80',
+      onEnd: async () => {
+        const ids = Array.from(container.querySelectorAll('[data-section-id]'))
+          .map(x => Number(x.getAttribute('data-section-id')));
+
+        await fetch('/sections/reorder', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': csrf(),
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify({ ids }),
+        });
+      },
+    });
+
   });
-
-  const chapterList = document.getElementById('chapter-list');
-  if (chapterList) {
-      Sortable.create(chapterList, {
-          animation: 150,
-          handle: '.drag-handle',
-      });
-  };
-
 
 });

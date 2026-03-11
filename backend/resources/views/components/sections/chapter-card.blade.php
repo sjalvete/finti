@@ -36,7 +36,7 @@
     </div>
 
     <div x-show="expanded" x-cloak class="px-4 pb-4">
-        <div class="grid gap-3">
+        <div class="grid gap-3" data-sections-sortable>
             @forelse($chapter->sections as $section)
                 <x-sections.card
                     :section="$section"
