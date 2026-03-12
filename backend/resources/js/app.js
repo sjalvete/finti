@@ -1,10 +1,32 @@
 import './bootstrap';
 
+import tinymce from 'tinymce'
+
+import 'tinymce/themes/silver'
+import 'tinymce/icons/default'
+
+import 'tinymce/models/dom'
+
+import 'tinymce/plugins/link'
+import 'tinymce/plugins/lists'
+import 'tinymce/plugins/code'
+import 'tinymce/plugins/table'
+import 'tinymce/plugins/autolink'
+
+import 'tinymce/skins/ui/oxide/skin.css'
+import 'tinymce/skins/content/default/content.css'
+
+window.tinymce = tinymce
+
 import Alpine from 'alpinejs';
 
 import Sortable from 'sortablejs';
 
 import { initSectionEditors } from './section-editor';
+
+import './mobile-section-editor'
+
+
 
 window.Alpine = Alpine;
 

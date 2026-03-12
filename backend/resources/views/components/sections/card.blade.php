@@ -24,7 +24,13 @@
         if ($store.sectionsUi.readerMode) editing = false;
     "
     class="relative p-4 border border-gray-200 dark:border-gray-800 rounded-2xl {{ $bgClass }}"
+    @click="
+        if (window.innerWidth < 768 && $store.sectionsUi.readerMode === false) {
+            $dispatch('open-mobile-section-editor', { id: {{ $section->id }} })
+        }
+    "
 >
+
     <div class="flex items-start justify-between gap-4">
         <div class="flex items-start gap-3 min-w-0 flex-1">
             <button @click="expanded = !expanded" class="px-3 py-2">
@@ -54,9 +60,11 @@
             <button
                 type="button"
                 data-drag-handle
-                class="section-drag-handle mt-1 px-2 py-1 cursor-grab active:cursor-grabbing"
+                class="hidden md:inline-flex section-drag-handle mt-1 px-2 py-1 cursor-grab active:cursor-grabbing"
                 x-show="$store.sectionsUi.reorderMode"
                 title="Drag to reorder"
+                @click.stop
+                @pointerdown.stop
             >
                 <x-heroicon-o-chevron-up-down class="w-5 h-5" />
             </button>

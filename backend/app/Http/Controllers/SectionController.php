@@ -60,6 +60,7 @@ class SectionController extends Controller
 
         return view('sections.index', [
             'chapters' => $chapters,
+            'sections' => $chapters->flatMap(fn ($chapter) => $chapter->sections)->values(),
             'orphaned' => $orphaned,
             'types' => $types,
             'progressOptions' => $progressOptions,
@@ -128,10 +129,25 @@ class SectionController extends Controller
             'title' => $data['title'],
             'synopsis' => $data['synopsis'] ?? null,
             'body' => $data['body'] ?? null,
-            'chapter_id' => $data['chapter_id'] ?: null,
-            'section_type_id' => $data['section_type_id'] ?: null,
+            'chapter_id' => $data['chapter_id'] ?? null,
+            'section_type_id' => $data['section_type_id'] ?? null,
             'progress_status' => $data['progress_status'],
         ]);
+
+        if ($request->expectsJson()) {
+            return response()->json([
+                'section' => [
+                    'id' => $section->id,
+                    'title' => $section->title,
+                    'synopsis' => $section->synopsis,
+                    'body' => $section->body,
+                    'chapter_id' => $section->chapter_id,
+                    'section_type_id' => $section->section_type_id,
+                    'progress_status' => $section->progress_status,
+                    'chapter_title' => $section->chapter?->name,
+                ],
+            ]);
+        }
 
         return redirect()->route('sections.index');
     }

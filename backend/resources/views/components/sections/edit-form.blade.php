@@ -39,6 +39,21 @@
     </div>
 
     <div>
+        <label class="block text-sm font-medium mb-1">Type</label>
+        <select
+            name="section_type_id"
+            class="w-full px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-transparent"
+        >
+            <option value="">(no type)</option>
+            @foreach($types as $type)
+                <option value="{{ $type->id }}" @selected((string) old('section_type_id', $section->section_type_id) === (string) $type->id)>
+                    {{ $type->name }}
+                </option>
+            @endforeach
+        </select>
+    </div>
+
+    <div>
         <label class="block text-sm font-medium mb-1">Progress</label>
         <select
             name="progress_status"
@@ -60,21 +75,6 @@
             rows="4"
             class="w-full px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-transparent"
         >{{ old('synopsis', $section->synopsis) }}</textarea>
-    </div>
-
-    <div>
-        <label class="block text-sm font-medium mb-1">Type</label>
-        <select
-            name="section_type_id"
-            class="w-full px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-transparent"
-        >
-            <option value="">(no type)</option>
-            @foreach($types as $type)
-                <option value="{{ $type->id }}" @selected((string) old('section_type_id', $section->section_type_id) === (string) $type->id)>
-                    {{ $type->name }}
-                </option>
-            @endforeach
-        </select>
     </div>
 
     <div data-section-editor>

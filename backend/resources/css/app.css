@@ -200,3 +200,7 @@
 .reader-mode #sections-sortable {
   gap: 0 !important;
 }
+.tox-tinymce {
+    height: 100% !important;
+    border: none!important;
+}

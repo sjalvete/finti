@@ -66,6 +66,16 @@ class SectionTypeController extends Controller
 
         $sectionType->update($data);
 
+        if ($request->expectsJson()) {
+            return response()->json([
+                'sectionType' => [
+                    'id' => $sectionType->id,
+                    'name' => $sectionType->name,
+                    'color_key' => $sectionType->color_key,
+                ],
+            ]);
+        }
+
         return redirect()->route('section-types.index');
     }
 

@@ -52,5 +52,7 @@
         'progressOptions' => $progressOptions,
     ])
 
+
     @include('sections._scripts')
+    @include('components.sections.mobile-section-editor', ['sections' => $sections])
 </x-app-layout>
