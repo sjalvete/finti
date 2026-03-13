@@ -35,6 +35,7 @@
 .dark .type-violet { background: #110d16; }
 .dark .type-pink   { background: #160d13; }
 
+.type-none    { border-left: 4px solid transparent; }
 .type-red    { border-left: 4px solid #f87171; }
 .type-orange { border-left: 4px solid #fb923c; }
 .type-yellow { border-left: 4px solid #facc15; }
@@ -99,8 +100,11 @@
 .reader-mode {
   background: white;
   max-width: 52rem;
-  padding-left: 1rem!important;
-  padding-right: 1rem!important;
+  padding: 0!important;
+}
+
+.reader-mode #chapters-list {
+  gap: 0!important;
 }
 
 .dark .reader-mode { background: black }
@@ -111,6 +115,10 @@
 }
 
 /* sections become flat, compact reading blocks */
+.reader-mode [data-chapter-id] {
+  border: none!important;
+  border-radius: 0!important;
+}
 .reader-mode [data-section-id] {
   background: transparent !important;
   border-top: none !important;
@@ -118,14 +126,13 @@
   border-bottom: none !important;
   border-radius: 0 !important;
   box-shadow: none !important;
-  padding: 0 0 0.75rem 1rem !important;
+  padding: 0 0 0 0.5rem!important;
   margin: 0 !important;
 }
 
 /* keep only the internal left colour stripe */
 .reader-mode .type-none {
   box-shadow: none !important;
-  border-left: none!important;
 }
 
 .reader-mode .type-gray,

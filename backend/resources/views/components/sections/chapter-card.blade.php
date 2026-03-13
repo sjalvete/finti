@@ -9,19 +9,14 @@
 <div
     data-chapter-id="{{ $chapter->id }}"
     x-data="{ expanded: false }"
+    @click="expanded = !expanded"
     x-effect="expanded = $store.sectionsUi.expandedAll"
     class="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white/60 dark:bg-gray-900/40"
 >
     <div class="p-4 flex items-start justify-between gap-4">
         <div class="flex items-start gap-3 min-w-0 flex-1">
-            <button
-                type="button"
-                @click="expanded = !expanded"
-                class="px-3 py-2"
-            >
-                <x-heroicon-o-chevron-right x-show="!expanded" class="w-5 h-5" />
-                <x-heroicon-o-chevron-down x-show="expanded" class="w-5 h-5" />
-            </button>
+            <x-heroicon-o-chevron-right x-show="!expanded" class="w-5 h-5" />
+            <x-heroicon-o-chevron-down x-show="expanded" class="w-5 h-5" />
 
             <div class="min-w-0 flex-1">
                 <div class="text-xl font-semibold leading-tight">

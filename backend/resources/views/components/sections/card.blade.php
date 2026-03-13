@@ -24,16 +24,23 @@
         if ($store.sectionsUi.readerMode) editing = false;
     "
     class="relative p-4 border border-gray-200 dark:border-gray-800 rounded-2xl {{ $bgClass }}"
-    @click="
-        if (window.innerWidth < 768 && $store.sectionsUi.readerMode === false) {
-            $dispatch('open-mobile-section-editor', { id: {{ $section->id }} })
+    @click.stop="
+        if (window.innerWidth < 768) {
+            if ($store.sectionsUi.readerMode === false) {
+                $dispatch('open-mobile-section-editor', { id: {{ $section->id }} })
+            } else {
+                expanded = !expanded;
+            }
         }
     "
 >
 
     <div class="flex items-start justify-between gap-4">
         <div class="flex items-start gap-3 min-w-0 flex-1">
-            <button @click="expanded = !expanded" class="px-3 py-2">
+            <button
+                x-show="(window.innerWidth >= 768) || $store.sectionsUi.readerMode"
+                @click.stop="expanded = !expanded"
+            >
                 <x-heroicon-o-chevron-right x-show="!expanded" class="w-5 h-5" />
                 <x-heroicon-o-chevron-down x-show="expanded" class="w-5 h-5" />
             </button>
@@ -71,7 +78,7 @@
         </div>
     </div>
 
-    <div x-show="expanded" x-cloak class="mt-4">
+    <div x-show="expanded" x-cloak class="mt-4" @click.stop="">
         <div x-show="!editing">
             @if($section->body)
                 <div class="prose prose-sm max-w-none dark:prose-invert leading-7">

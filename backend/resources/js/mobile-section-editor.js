@@ -32,6 +32,7 @@ window.mobileSectionEditor = function ({ sections, saveUrl, csrf }) {
                     resize: false,
                     license_key: 'gpl',
                     readonly: false,
+                    inline: false,
                     skin: false,
                     content_css: false,
                     menubar: false,
