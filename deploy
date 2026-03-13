@@ -1,0 +1,7 @@
+#!/bin/bash
+ssh -l sj 217.154.248.213 << 'EOF'
+cd /home/sj/finti
+git pull
+docker compose up -d node
+art optimize
+EOF

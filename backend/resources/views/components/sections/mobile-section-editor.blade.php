@@ -199,7 +199,7 @@
 
                 <button
                     type="button"
-                    class="rounded-lg bg-primary-600 text-white px-3 py-2 text-sm disabled:opacity-50"
+                    class="rounded-lg bg-blue-600 text-white px-3 py-2 text-sm disabled:opacity-50"
                     :disabled="isSaving"
                     @click.prevent.stop="saveAndContinue()"
                 >
