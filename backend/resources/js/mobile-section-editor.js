@@ -48,6 +48,7 @@ window.mobileSectionEditor = function ({ sections, saveUrl, csrf }) {
                         padding: 25px;
                     }
                     `,
+                    contextmenu: false,
                     setup: (editor) => {
                         this.editor = editor
 
