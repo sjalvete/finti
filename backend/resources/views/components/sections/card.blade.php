@@ -29,7 +29,7 @@
             if ($store.sectionsUi.readerMode === false) {
                 $dispatch('open-mobile-section-editor', { id: {{ $section->id }} })
             } else {
-                expanded = !expanded;
+                if ($store.sectionsUi.reorderMode) expanded = !expanded;
             }
         }
     "
@@ -70,8 +70,7 @@
                 class="hidden md:inline-flex section-drag-handle mt-1 px-2 py-1 cursor-grab active:cursor-grabbing"
                 x-show="$store.sectionsUi.reorderMode"
                 title="Drag to reorder"
-                @click.stop
-                @pointerdown.stop
+                @click="console.log('parent click', $event.target)"
             >
                 <x-heroicon-o-chevron-up-down class="w-5 h-5" />
             </button>

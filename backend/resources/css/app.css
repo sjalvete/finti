@@ -211,3 +211,28 @@
     height: 100% !important;
     border: none!important;
 }
+
+
+.tox .tox-editor-header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 20 !important;
+    background: white !important;
+}
+
+.tox-tinymce {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.tox .tox-editor-container {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 0 !important;
+    flex: 1 1 auto !important;
+}
+
+.tox .tox-edit-area {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+}
