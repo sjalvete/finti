@@ -47,7 +47,7 @@
 
             <div class="w-full flex-1">
                 <div class="text-xl font-semibold leading-tight flex items-center justify-between md:justify-start gap-4">
-                    {{ $section->title }}
+                    {{ $section->title }} {{ strlen($section->body) }}
                     <x-progress-stepper :step="$stepMap[$section->progress_status] ?? 0" />
                 </div>
 
